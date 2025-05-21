@@ -1,5 +1,5 @@
-/* @import './reset.css';
-@import './variables.css'; */
+@import './reset.css';
+@import './variables.css';
 
 body {
   font-family: 'Inter', sans-serif;
@@ -145,4 +145,19 @@ h3 {
   border-radius: var(--radius-xxl);
   margin-top: var(--spacing-base);
   margin-right: var(--spacing-xxs);
+}
+/* ************** */
+/*BACKLOG */
+/* ************* */
+
+.backlog-board {
+  margin: 0 var(--spacing-bl);
+  padding: var(--spacing-base);
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: var(--spacing-bl);
+}
+.backlog-board .card {
+  width: 40rem;
 }

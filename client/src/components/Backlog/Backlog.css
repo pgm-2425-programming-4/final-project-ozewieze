@@ -1,0 +1,11 @@
+.backlog-board {
+  margin: 0 var(--spacing-bl);
+  padding: var(--spacing-base);
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: var(--spacing-bl);
+}
+.backlog-board .card {
+  width: 40rem;
+}
