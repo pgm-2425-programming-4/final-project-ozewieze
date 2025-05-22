@@ -5,3 +5,6 @@
 1. name: Stef
 2. stef@hotmail.com
 3. Stef123+
+
+link to frontend:
+https://jammin-it.netlify.app/

@@ -15,8 +15,6 @@ function PaginatedBacklog() {
     setPageSize(size);
   }
   useEffect(() => {
-    //your-strapi-app.onrender.com/api/tasks?populate=* has been blocked by CORS policy
-
     fetch(
       `${API_URL}/tasks?populate=*&filters[statuses][name][$eq]=Backlog&pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}`,
       {
