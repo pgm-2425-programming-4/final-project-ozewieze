@@ -18,7 +18,7 @@ function PaginatedBacklog() {
     //your-strapi-app.onrender.com/api/tasks?populate=* has been blocked by CORS policy
 
     fetch(
-      `${API_URL}?populate=*&filters[statuses][name][$eq]=Backlog&pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}`,
+      `${API_URL}/tasks?populate=*&filters[statuses][name][$eq]=Backlog&pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}`,
       {
         headers: { Authorization: `Bearer ${API_TOKEN}` },
       }
