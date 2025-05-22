@@ -1,6 +1,3 @@
-// export const API_URL = 'http://localhost:1337/api/tasks';
-// export const API_TOKEN =
-//   '56a9020669d105abc8d3aa6e60a516b72d40a9eb191a7fa96261b5af727ee06594aba65b1dfb4f7584db00838d24ae53d23a9a718982bb4e6eaa18cede48b291966c18870e7328082f2a387f028820eceeccfb809c1ead28c1d9fcef72eeea469a1a7c27f0978d617c007a93eb17edc8ebf373fcbce95d873b323f66a619f621';
 export const PAGE_SIZE_OPTIONS = [5, 10, 25, 50];
 
 export const API_URL = import.meta.env.PROD
