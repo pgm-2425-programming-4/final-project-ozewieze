@@ -7,5 +7,6 @@ export async function getTasks(currentPage, pageSize) {
     }
   );
   const data = await result.json();
+  console.log(data);
   return data;
 }
