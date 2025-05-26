@@ -5,8 +5,8 @@ import { Pagination } from './Pagination/Pagination';
 import { getTasks } from '../queries/getTasks';
 
 function PaginatedBacklog() {
-  const [tasks, setTasks] = useState([]);
-  const [pageCount, setPageCount] = useState(1);
+  // const [tasks, setTasks] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
   function handlePageChanged(pageNumber) {
@@ -26,8 +26,6 @@ function PaginatedBacklog() {
       if (currentPage > data.meta.pagination.pageCount) {
         setCurrentPage(data.meta.pagination.pageCount);
       }
-      setTasks(data.data);
-      setPageCount(data.meta.pagination.pageCount);
     }
   }, [data, currentPage]);
 
@@ -35,13 +33,13 @@ function PaginatedBacklog() {
   if (error) return `An error has occurred: ${error.message}`;
   return (
     <>
-      <Backlog tasks={tasks} />
+      <Backlog tasks={data.data} />
       <Pagination
+        pageCount={data.meta.pagination.pageCount}
         currentPage={currentPage}
-        pageCount={pageCount}
+        pageSize={pageSize}
         onPageChanged={handlePageChanged}
         onPageSizeChanged={handlePageSizeChanged}
-        pageSize={pageSize}
       />
     </>
   );
