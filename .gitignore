@@ -161,3 +161,5 @@ server/.strapi-cloud.json
 # TanStack Router generated files
 client/src/routeTree.gen.ts
 client/src/routeTree.gen.js
+
+node_modules/
