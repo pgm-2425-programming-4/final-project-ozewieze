@@ -1,11 +1,11 @@
 import { PAGE_SIZE_OPTIONS } from '../../../constants/constants';
 import 'bulma/css/bulma.min.css';
 export function Pagination({
-  currentPage,
   pageCount,
+  currentPage,
+  pageSize,
   onPageChanged,
   onPageSizeChanged,
-  pageSize,
 }) {
   let pageNumberArray;
 
