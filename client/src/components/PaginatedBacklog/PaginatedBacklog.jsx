@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Backlog } from './Backlog/Backlog';
 import { Pagination } from './Pagination/Pagination';
-import { getTasks } from '../queries/getTasks';
+import { getTasks } from '../../queries/getTasks';
 
 function PaginatedBacklog() {
   // const [tasks, setTasks] = useState([]);
