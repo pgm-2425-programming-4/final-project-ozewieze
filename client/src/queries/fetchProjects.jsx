@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 export function useFetchProjects() {
   const { isPending, error, data } = useQuery({
+    // queryKey is the label for caching purposes
     queryKey: ['project'],
     queryFn: async () => {
       const response = await fetch(`${API_URL}/projects`, {

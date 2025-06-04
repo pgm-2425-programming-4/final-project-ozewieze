@@ -3,8 +3,7 @@ import { useFetchProjects } from '../queries/fetchProjects';
 
 export function Sidebar() {
   //i rename data to projects, to avoid data.data in sidebar
-
-  const { data: projects, isPending, error } = useFetchProjects();
+  const { data, isPending, error } = useFetchProjects();
 
   if (isPending) {
     return (
@@ -27,9 +26,16 @@ export function Sidebar() {
     <aside className="sidebar">
       <h1>PROJECTS</h1>
       <ul>
-        {projects.data.map(project => (
+        {/* {console.log(data.data)} */}
+        {data.data.map(project => (
           <li key={project.id}>
-            <button className="btn sidebar-task">{project.Project}</button>
+            <Link
+              to="/projects/$id"
+              params={{ id: project.documentId }}
+              className="btn sidebar-task"
+            >
+              {project.Project}
+            </Link>
           </li>
         ))}
       </ul>

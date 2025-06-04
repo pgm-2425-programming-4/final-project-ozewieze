@@ -3,7 +3,6 @@ import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import '../../main.css';
 import { Sidebar } from '../components/Sidebar';
-import { Header } from '../components/Header';
 
 export const Route = createRootRoute({
   component: () => (
