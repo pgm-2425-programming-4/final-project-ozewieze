@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { Backlog } from './Backlog/Backlog';
-import { Pagination } from './Pagination/Pagination';
-import { getTasks } from '../../queries/getTasks';
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Backlog } from "./Backlog/Backlog";
+import { Pagination } from "./Pagination/Pagination";
+import { getTasks } from "../../queries/getTasks";
 
 function PaginatedBacklog() {
   // const [tasks, setTasks] = useState([]);
@@ -16,7 +16,7 @@ function PaginatedBacklog() {
     setPageSize(size);
   }
   const { isPending, error, data } = useQuery({
-    queryKey: ['backlog-tasks', currentPage, pageSize],
+    queryKey: ["backlog-tasks", currentPage, pageSize],
     queryFn: () => getTasks(currentPage, pageSize),
   });
 
@@ -29,7 +29,7 @@ function PaginatedBacklog() {
     }
   }, [data, currentPage]);
 
-  if (isPending) return 'Loading...';
+  if (isPending) return "Loading...";
   if (error) return `An error has occurred: ${error.message}`;
   return (
     <>

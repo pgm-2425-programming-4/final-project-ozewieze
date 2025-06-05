@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import '../../main.css';
-import { Sidebar } from '../components/Sidebar';
+import * as React from "react";
+import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import "../../main.css";
+import { Sidebar } from "../components/Sidebar";
 
 export const Route = createRootRoute({
   component: () => (

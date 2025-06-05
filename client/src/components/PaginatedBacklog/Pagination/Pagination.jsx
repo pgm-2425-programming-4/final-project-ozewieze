@@ -1,5 +1,5 @@
-import { PAGE_SIZE_OPTIONS } from '../../../constants/constants';
-import 'bulma/css/bulma.min.css';
+import { PAGE_SIZE_OPTIONS } from "../../../constants/constants";
+import "bulma/css/bulma.min.css";
 export function Pagination({
   pageCount,
   currentPage,
@@ -43,22 +43,22 @@ export function Pagination({
       pageLinks.push(
         <li key={index}>
           <span className="pagination-ellipsis">&hellip;</span>
-        </li>
+        </li>,
       );
     } else {
       pageLinks.push(
         <li key={index}>
           <button
             className={
-              'pagination-link ' +
-              (pageNumber === currentPage ? 'is-current' : '')
+              "pagination-link " +
+              (pageNumber === currentPage ? "is-current" : "")
             }
             aria-label={`Go to page ${pageNumber}`}
             onClick={() => onPageChanged(pageNumber)}
           >
             {pageNumber}
           </button>
-        </li>
+        </li>,
       );
     }
   });
@@ -86,7 +86,7 @@ export function Pagination({
             onPageSizeChanged(event.target.value);
           }}
         >
-          {PAGE_SIZE_OPTIONS.map(option => (
+          {PAGE_SIZE_OPTIONS.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>

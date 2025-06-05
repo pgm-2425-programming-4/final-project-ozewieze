@@ -2,7 +2,7 @@
 @import './variables.css'; */
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: var(--normal);
   font-style: normal;
@@ -17,7 +17,7 @@ body {
 h1 {
   font-size: var(--size-s);
   color: var(--tint-plus);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   letter-spacing: 1.3px;
   font-size: var(--size-xs);
   font-weight: var(--bold);

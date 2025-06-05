@@ -1,4 +1,4 @@
-import { useFetchProjectRelatedTasks } from '../queries/fetchProjectRelatedTasks';
+import { useFetchProjectRelatedTasks } from "../queries/fetchProjectRelatedTasks";
 export function TaskBoard({ projectId }) {
   const { data, isPending, error } = useFetchProjectRelatedTasks(projectId);
   if (isPending) {
@@ -12,7 +12,7 @@ export function TaskBoard({ projectId }) {
     return <p>Error loading projects</p>;
   }
   if (data) {
-    console.log('data returned:', data.data);
+    console.log("data returned:", data.data);
     return (
       <main class="task-board">
         <div>
