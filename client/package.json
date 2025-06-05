@@ -9,9 +9,6 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write \"src/**/*.{js,jsx,html,css}\""
-  
-}
-
   },
   "dependencies": {
     "@tanstack/react-query": "^5.80.2",
