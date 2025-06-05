@@ -25,3 +25,26 @@ export function useFetchProjectRelatedTasks(projectId) {
   console.log('project related data:', data);
   return { isPending, error, data };
 }
+export function useFetchAllStatuses() {
+  const { isPending, error, data } = useQuery({
+    queryKey: ['statuses'],
+    queryFn: async () => {
+      const response = await fetch(`${API_URL}/statuses?sort=order:asc`, {
+        headers: {
+          Authorization: `Bearer ${API_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch statuses');
+      }
+
+      const data = await response.json();
+
+      return data;
+    },
+  });
+
+  return { isPending, error, data };
+}

@@ -1,22 +1,51 @@
-import { useFetchProjectRelatedTasks } from '../queries/fetchProjectRelatedTasks';
+import {
+  useFetchProjectRelatedTasks,
+  useFetchAllStatuses,
+} from '../queries/fetchProjectRelatedTasks';
+
 export function TaskBoard({ projectId }) {
-  const { data, isPending, error } = useFetchProjectRelatedTasks(projectId);
-  if (isPending) {
+  const {
+    data: projectData,
+    isPending: projectIsPending,
+    error: projectError,
+  } = useFetchProjectRelatedTasks(projectId);
+  const {
+    data: statusesData,
+    isPending: statusesIsPending,
+    error: statusesError,
+  } = useFetchAllStatuses();
+
+  if (projectIsPending || statusesIsPending) {
     return (
       <main class="task-board">
         <p>Loading projects...</p>
       </main>
     );
   }
-  if (error) {
+  if (projectError || statusesError) {
     return <p>Error loading projects</p>;
   }
-  if (data) {
-    console.log('data returned:', data.data);
+  if (projectData || statusesData) {
+    console.log('projectData returned:', projectData.data);
+    console.log('statusesData returned: ', statusesData.data);
     return (
       <main class="task-board">
-        <div>
-          <h3>To do</h3>
+        {statusesData.data.map(status => {
+          if (status.name !== 'Backlog') {
+            return (
+              <div>
+                {' '}
+                <h3>{status.name}</h3>
+                <article class="card">
+                  <p>Create pipeline with Github Actions</p>
+                  <p class="tag">Infra</p>
+                </article>
+              </div>
+            );
+          }
+        })}
+
+        {/* <h3>To do</h3>
           <article class="card">
             <p>Create pipeline with Github Actions</p>
             <p class="tag">Infra</p>
@@ -50,8 +79,8 @@ export function TaskBoard({ projectId }) {
           <article class="card">
             <p>Initialize Git repository on Github</p>
             <p class="tag">Infra</p>
-          </article>
-        </div>
+          </article> */}
+        {/* </div> */}
       </main>
     );
   }

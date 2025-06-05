@@ -406,6 +406,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
 export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
   collectionName: 'statuses';
   info: {
+    description: '';
     displayName: 'Status';
     pluralName: 'statuses';
     singularName: 'status';
@@ -424,6 +425,7 @@ export interface ApiStatusStatus extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     tasks: Schema.Attribute.Relation<'oneToMany', 'api::task.task'>;
     updatedAt: Schema.Attribute.DateTime;
