@@ -4,7 +4,7 @@ export function Backlog({ tasks }) {
     <div>
       <table>
         <tbody className="backlog-board">
-          {tasks.map(task => {
+          {tasks.map((task) => {
             if (task.statuses && task.statuses.name === 'Backlog') {
               return (
                 <tr key={task.id} className="card">
