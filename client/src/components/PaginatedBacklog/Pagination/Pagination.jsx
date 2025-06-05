@@ -1,5 +1,5 @@
-import { PAGE_SIZE_OPTIONS } from "../../../constants/constants";
-import "bulma/css/bulma.min.css";
+import { PAGE_SIZE_OPTIONS } from '../../../constants/constants';
+import 'bulma/css/bulma.min.css';
 export function Pagination({
   pageCount,
   currentPage,
@@ -50,8 +50,8 @@ export function Pagination({
         <li key={index}>
           <button
             className={
-              "pagination-link " +
-              (pageNumber === currentPage ? "is-current" : "")
+              'pagination-link ' +
+              (pageNumber === currentPage ? 'is-current' : '')
             }
             aria-label={`Go to page ${pageNumber}`}
             onClick={() => onPageChanged(pageNumber)}

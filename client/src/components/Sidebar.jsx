@@ -1,5 +1,5 @@
-import { Link } from "@tanstack/react-router";
-import { useFetchProjects } from "../queries/fetchProjects";
+import { Link } from '@tanstack/react-router';
+import { useFetchProjects } from '../queries/fetchProjects';
 
 export function Sidebar() {
   //i rename data to projects, to avoid data.data in sidebar

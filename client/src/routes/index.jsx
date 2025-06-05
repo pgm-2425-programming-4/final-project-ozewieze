@@ -1,12 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute('/')({
   component: Index,
 });
 
 function Index() {
   return (
-    <p style={{ margin: "1rem" }}>
+    <p style={{ margin: '1rem' }}>
       Hallo, dit is mijn kanban board. Zet je rustig neer, haal diep adem, klik
       op een project, zie het aantal taken, klik er eentje aan. Haal nog es diep
       adem en begin eraan.

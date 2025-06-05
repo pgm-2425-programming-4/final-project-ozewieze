@@ -1,9 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Header } from "../components/Header";
+import { createFileRoute } from '@tanstack/react-router';
+import { Header } from '../components/Header';
 
-import { TaskBoard } from "../components/TaskBoard";
+import { TaskBoard } from '../components/TaskBoard';
 
-export const Route = createFileRoute("/projects/$id")({
+export const Route = createFileRoute('/projects/$id')({
   component: RouteComponent,
 });
 
