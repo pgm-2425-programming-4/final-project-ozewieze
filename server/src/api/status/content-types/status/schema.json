@@ -14,14 +14,14 @@
     "name": {
       "type": "string"
     },
+    "order": {
+      "type": "integer"
+    },
     "tasks": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::task.task",
-      "mappedBy": "statuses"
-    },
-    "order": {
-      "type": "integer"
+      "mappedBy": "task_status"
     }
   }
 }

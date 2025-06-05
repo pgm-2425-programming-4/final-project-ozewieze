@@ -6,7 +6,7 @@ export function useFetchProjectRelatedTasks(projectId) {
     queryKey: ['project', projectId, 'with-tasks'],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:1337/api/projects/${projectId}?populate[tasks][populate][0]=statuses`,
+        `http://localhost:1337/api/projects/${projectId}?populate[tasks][populate][0]=task_status`,
         {
           headers: {
             Authorization: `Bearer ${API_TOKEN}`,

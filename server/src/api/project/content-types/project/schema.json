@@ -17,7 +17,8 @@
     "tasks": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::task.task"
+      "target": "api::task.task",
+      "mappedBy": "project"
     }
   }
 }

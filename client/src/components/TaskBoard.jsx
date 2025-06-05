@@ -25,21 +25,32 @@ export function TaskBoard({ projectId }) {
   if (projectError || statusesError) {
     return <p>Error loading projects</p>;
   }
-  if (projectData || statusesData) {
-    console.log('projectData returned:', projectData.data);
-    console.log('statusesData returned: ', statusesData.data);
+  if (projectData && statusesData) {
+    const tasks = projectData.data.tasks;
+    console.log('tasks returned:', tasks);
+
+    const statuses = statusesData.data;
+    console.log('statusesData returned: ', statuses);
     return (
       <main class="task-board">
-        {statusesData.data.map(status => {
-          if (status.name !== 'Backlog') {
+        {statuses.map(status => {
+          // TODO
+
+          const statusRelatedTasks = tasks.filter(
+            task => task.task_status && task.task_status.name === status.name,
+          );
+          console.log('status-related-tasks: ', statusRelatedTasks);
+          if (status.task_status !== 'Backlog') {
             return (
-              <div>
+              <div key={status.id}>
                 {' '}
                 <h3>{status.name}</h3>
-                <article class="card">
-                  <p>Create pipeline with Github Actions</p>
-                  <p class="tag">Infra</p>
-                </article>
+                {statusRelatedTasks.map(task => (
+                  <article class="card">
+                    <p>{task.Task}</p>
+                    <p class="tag">Infra</p>
+                  </article>
+                ))}
               </div>
             );
           }

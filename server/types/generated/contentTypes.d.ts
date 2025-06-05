@@ -452,9 +452,10 @@ export interface ApiTaskTask extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::task.task'> &
       Schema.Attribute.Private;
+    project: Schema.Attribute.Relation<'manyToOne', 'api::project.project'>;
     publishedAt: Schema.Attribute.DateTime;
-    statuses: Schema.Attribute.Relation<'manyToOne', 'api::status.status'>;
-    Title: Schema.Attribute.String;
+    Task: Schema.Attribute.String;
+    task_status: Schema.Attribute.Relation<'manyToOne', 'api::status.status'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
