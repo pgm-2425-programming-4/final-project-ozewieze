@@ -12,9 +12,8 @@ function RouteComponent() {
 
   return (
     <>
-      <Header />
+      <Header projectId={id} />
       <TaskBoard projectId={id} />
-      <div>Hello "/projects {id}"!</div>;
     </>
   );
 }

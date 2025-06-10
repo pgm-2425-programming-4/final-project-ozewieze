@@ -1,9 +1,11 @@
 import { Link } from '@tanstack/react-router';
-import { useFetchProjects } from '../queries/fetchProjects';
-
+import { fetchProjects } from '../queries/fetchProjects';
+import { useQuery } from '@tanstack/react-query';
 export function Sidebar() {
-  //i rename data to projects, to avoid data.data in sidebar
-  const { data, isPending, error } = useFetchProjects();
+  const { data, isPending, error } = useQuery({
+    queryKey: ['projects'],
+    queryFn: fetchProjects,
+  });
 
   if (isPending) {
     return (

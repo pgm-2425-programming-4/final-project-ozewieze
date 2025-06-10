@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router';
+
 export function Header() {
   return (
     <header className="board-header">
@@ -21,9 +23,9 @@ export function Header() {
           Active project: <span>PGM3</span>
         </p>
         <button className="btn add-task">Add new task</button>
-        <a href="./backlog.html" className="btn view-backlog">
+        <Link to="/paginated-backlog" className="btn view-backlog">
           View backlog
-        </a>
+        </Link>
       </div>
     </header>
   );

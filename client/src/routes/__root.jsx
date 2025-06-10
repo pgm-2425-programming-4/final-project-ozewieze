@@ -5,11 +5,7 @@ import '../../main.css';
 import { Sidebar } from '../components/Sidebar';
 
 export const Route = createRootRoute({
-  component: RootComponent,
-});
-
-function RootComponent() {
-  return (
+  component: () => (
     <React.Fragment>
       <div className="app-container">
         <Sidebar />
@@ -22,5 +18,5 @@ function RootComponent() {
         </div>
       </div>
     </React.Fragment>
-  );
-}
+  ),
+});

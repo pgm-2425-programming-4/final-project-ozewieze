@@ -1,6 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
 import {
-  useFetchProjectRelatedTasks,
-  useFetchAllStatuses,
+  fetchProjectRelatedTasks,
+  fetchAllStatuses,
 } from '../queries/fetchProjectRelatedTasks';
 
 export function TaskBoard({ projectId }) {
@@ -8,16 +9,19 @@ export function TaskBoard({ projectId }) {
     data: projectData,
     isPending: projectIsPending,
     error: projectError,
-  } = useFetchProjectRelatedTasks(projectId);
+  } = useQuery({
+    queryKey: ['project', projectId, 'with-tasks'],
+    queryFn: () => fetchProjectRelatedTasks(projectId),
+  });
+
   const {
     data: statusesData,
     isPending: statusesIsPending,
     error: statusesError,
-  } = useFetchAllStatuses();
-
+  } = useQuery({ queryKey: ['statuses'], queryFn: fetchAllStatuses });
   if (projectIsPending || statusesIsPending) {
     return (
-      <main class="task-board">
+      <main className="task-board">
         <p>Loading projects...</p>
       </main>
     );
@@ -34,19 +38,17 @@ export function TaskBoard({ projectId }) {
     return (
       <main class="task-board">
         {statuses.map(status => {
-          // TODO
-
           const statusRelatedTasks = tasks.filter(
             task => task.task_status && task.task_status.name === status.name,
           );
           console.log('status-related-tasks: ', statusRelatedTasks);
-          if (status.task_status !== 'Backlog') {
+          if (status.name !== 'Backlog') {
             return (
               <div key={status.id}>
                 {' '}
                 <h3>{status.name}</h3>
                 {statusRelatedTasks.map(task => (
-                  <article class="card">
+                  <article class="card" key={task.id}>
                     <p>{task.Task}</p>
                     <p class="tag">Infra</p>
                   </article>
@@ -55,43 +57,6 @@ export function TaskBoard({ projectId }) {
             );
           }
         })}
-
-        {/* <h3>To do</h3>
-          <article class="card">
-            <p>Create pipeline with Github Actions</p>
-            <p class="tag">Infra</p>
-          </article>
-          <article class="card">
-            <p>Some task for PGM3</p>
-            <p class="tag">Documentation</p>
-          </article>
-        </div>
-        <div>
-          <h3>In progress</h3>
-          <article class="card">
-            <p>Set up Strapi on Render</p>
-            <p class="tag">Infra</p>
-            <p class="tag">Back-end</p>
-          </article>
-        </div>
-        <div>
-          <h3>Ready for review</h3>
-          <article class="card">
-            <p>Add formatting with Prettier</p>
-            <p class="tag">Front-end</p>
-          </article>
-          <article class="card">
-            <p>Add Linting with ESLint</p>
-            <p class="tag">Front-end</p>
-          </article>
-        </div>
-        <div>
-          <h3>Done</h3>
-          <article class="card">
-            <p>Initialize Git repository on Github</p>
-            <p class="tag">Infra</p>
-          </article> */}
-        {/* </div> */}
       </main>
     );
   }
