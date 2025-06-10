@@ -1,6 +1,23 @@
 import { Link } from '@tanstack/react-router';
+import { fetchProjectById } from '../queries/fetchProjectById';
+import { useQuery } from '@tanstack/react-query';
 
-export function Header() {
+export function Header({ projectId }) {
+  console.log('project-id: ', projectId);
+  const { isPending, isError, data } = useQuery({
+    queryKey: ['project', projectId],
+    queryFn: async () => await fetchProjectById(projectId),
+  });
+
+  if (isPending) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {isError.message}</span>;
+  }
+
+  console.log('header individueel project: ', data.data.Project);
   return (
     <header className="board-header">
       <form action="#">
@@ -20,7 +37,7 @@ export function Header() {
       </form>
       <div className="active-project">
         <p>
-          Active project: <span>PGM3</span>
+          Active project: <span>{data.data.Project}</span>
         </p>
         <button className="btn add-task">Add new task</button>
         <Link to="/paginated-backlog" className="btn view-backlog">
