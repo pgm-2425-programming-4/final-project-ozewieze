@@ -40,7 +40,11 @@ export function Header({ projectId }) {
           Active project: <span>{data.data.Project}</span>
         </p>
         <button className="btn add-task">Add new task</button>
-        <Link to="/paginated-backlog" className="btn view-backlog">
+        <Link
+          to="/paginated-backlog/$id"
+          className="btn view-backlog"
+          params={{ id: projectId }}
+        >
           View backlog
         </Link>
       </div>

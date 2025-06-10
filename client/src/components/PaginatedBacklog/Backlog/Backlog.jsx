@@ -1,23 +1,25 @@
 import './Backlog.css';
 export function Backlog({ tasks }) {
   return (
-    <div>
-      <table>
-        <tbody className="backlog-board">
-          {tasks.map(task => {
-            if (task.statuses && task.statuses.name === 'Backlog') {
+    <>
+      {' '}
+      <main class="backlog-board">
+        <h3>Backlog</h3>
+
+        <table>
+          <tbody className="backlog-board">
+            {tasks.map(task => {
               return (
                 <tr key={task.id} className="card">
                   <td>
-                    <p>{task.Title}</p>
+                    <p>{task.Task}</p>
                   </td>
                 </tr>
               );
-            }
-            return null; // Explicitly return null for non-Backlog tasks
-          })}
-        </tbody>
-      </table>
-    </div>
+            })}
+          </tbody>
+        </table>
+      </main>
+    </>
   );
 }

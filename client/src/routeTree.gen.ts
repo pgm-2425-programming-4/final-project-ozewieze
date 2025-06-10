@@ -11,17 +11,11 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PaginatedBacklogImport } from './routes/paginated-backlog'
 import { Route as IndexImport } from './routes/index'
 import { Route as ProjectsIdImport } from './routes/projects.$id'
+import { Route as PaginatedBacklogIdImport } from './routes/paginated-backlog.$id'
 
 // Create/Update Routes
-
-const PaginatedBacklogRoute = PaginatedBacklogImport.update({
-  id: '/paginated-backlog',
-  path: '/paginated-backlog',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -32,6 +26,12 @@ const IndexRoute = IndexImport.update({
 const ProjectsIdRoute = ProjectsIdImport.update({
   id: '/projects/$id',
   path: '/projects/$id',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PaginatedBacklogIdRoute = PaginatedBacklogIdImport.update({
+  id: '/paginated-backlog/$id',
+  path: '/paginated-backlog/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,11 +46,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/paginated-backlog': {
-      id: '/paginated-backlog'
-      path: '/paginated-backlog'
-      fullPath: '/paginated-backlog'
-      preLoaderRoute: typeof PaginatedBacklogImport
+    '/paginated-backlog/$id': {
+      id: '/paginated-backlog/$id'
+      path: '/paginated-backlog/$id'
+      fullPath: '/paginated-backlog/$id'
+      preLoaderRoute: typeof PaginatedBacklogIdImport
       parentRoute: typeof rootRoute
     }
     '/projects/$id': {
@@ -67,41 +67,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/paginated-backlog': typeof PaginatedBacklogRoute
+  '/paginated-backlog/$id': typeof PaginatedBacklogIdRoute
   '/projects/$id': typeof ProjectsIdRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/paginated-backlog': typeof PaginatedBacklogRoute
+  '/paginated-backlog/$id': typeof PaginatedBacklogIdRoute
   '/projects/$id': typeof ProjectsIdRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/paginated-backlog': typeof PaginatedBacklogRoute
+  '/paginated-backlog/$id': typeof PaginatedBacklogIdRoute
   '/projects/$id': typeof ProjectsIdRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/paginated-backlog' | '/projects/$id'
+  fullPaths: '/' | '/paginated-backlog/$id' | '/projects/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/paginated-backlog' | '/projects/$id'
-  id: '__root__' | '/' | '/paginated-backlog' | '/projects/$id'
+  to: '/' | '/paginated-backlog/$id' | '/projects/$id'
+  id: '__root__' | '/' | '/paginated-backlog/$id' | '/projects/$id'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PaginatedBacklogRoute: typeof PaginatedBacklogRoute
+  PaginatedBacklogIdRoute: typeof PaginatedBacklogIdRoute
   ProjectsIdRoute: typeof ProjectsIdRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PaginatedBacklogRoute: PaginatedBacklogRoute,
+  PaginatedBacklogIdRoute: PaginatedBacklogIdRoute,
   ProjectsIdRoute: ProjectsIdRoute,
 }
 
@@ -116,15 +116,15 @@ export const routeTree = rootRoute
       "filePath": "__root.jsx",
       "children": [
         "/",
-        "/paginated-backlog",
+        "/paginated-backlog/$id",
         "/projects/$id"
       ]
     },
     "/": {
       "filePath": "index.jsx"
     },
-    "/paginated-backlog": {
-      "filePath": "paginated-backlog.jsx"
+    "/paginated-backlog/$id": {
+      "filePath": "paginated-backlog.$id.jsx"
     },
     "/projects/$id": {
       "filePath": "projects.$id.jsx"

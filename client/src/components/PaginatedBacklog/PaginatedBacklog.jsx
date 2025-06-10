@@ -4,8 +4,11 @@ import { Backlog } from './Backlog/Backlog';
 import { Pagination } from './Pagination/Pagination';
 import { getTasks } from '../../queries/getTasks';
 
-function PaginatedBacklog() {
-  // const [tasks, setTasks] = useState([]);
+function PaginatedBacklog({ currentProject }) {
+  console.log(
+    'PaginatedBacklog - currentProject specifically:',
+    currentProject,
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
@@ -16,8 +19,8 @@ function PaginatedBacklog() {
     setPageSize(size);
   }
   const { isPending, error, data } = useQuery({
-    queryKey: ['backlog-tasks', currentPage, pageSize],
-    queryFn: () => getTasks(currentPage, pageSize),
+    queryKey: ['backlog-tasks', currentPage, pageSize, currentProject],
+    queryFn: () => getTasks(currentPage, pageSize, currentProject),
   });
 
   // Still need useEffect only for the page boundary check!
@@ -31,6 +34,7 @@ function PaginatedBacklog() {
 
   if (isPending) return 'Loading...';
   if (error) return `An error has occurred: ${error.message}`;
+  console.log('return paginatedbacklog: ', data.data);
   return (
     <>
       <Backlog tasks={data.data} />
