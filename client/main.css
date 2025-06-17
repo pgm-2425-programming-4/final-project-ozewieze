@@ -123,6 +123,7 @@ div h3 {
   padding: var(--spacing-base);
   display: flex;
   gap: var(--spacing-bl);
+  position: relative;
 }
 
 .task-board div {
@@ -160,4 +161,55 @@ div h3 {
 }
 .backlog-board .card {
   width: 40rem;
+}
+/* ************** */
+/* DIALOG */
+/* ************* */
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background: var(--primary);
+  border-radius: var(--radius-base);
+  padding: var(--spacing-bl);
+  max-width: 32rem;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-bl);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: var(--size-xl);
+  cursor: pointer;
+}
+
+.field {
+  margin-bottom: var(--spacing-base);
+}
+label {
+  font-size: var(--size-s);
+  font-style: italic;
+  color: var(--tint-plus);
+  margin-bottom: var(--spacing-base);
+  font-weight: var(--light);
 }

@@ -1,10 +1,24 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import {
   fetchProjectRelatedTasks,
   fetchAllStatuses,
 } from '../queries/fetchProjectRelatedTasks';
+import { TaskDetailDialog } from './TaskDetailDialog';
 
 export function TaskBoard({ projectId }) {
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleTaskClick = task => {
+    setSelectedTask(task);
+    setIsDialogOpen(true);
+  };
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setSelectedTask(null);
+  };
+
   const {
     data: projectData,
     isPending: projectIsPending,
@@ -37,28 +51,40 @@ export function TaskBoard({ projectId }) {
     const statuses = statusesData.data;
     console.log('statusesData returned: ', statuses);
     return (
-      <main class="task-board">
-        {statuses.map(status => {
-          const statusRelatedTasks = tasks.filter(
-            task => task.task_status && task.task_status.name === status.name,
-          );
-          console.log('status-related-tasks: ', statusRelatedTasks);
-          if (status.name !== 'Backlog') {
-            return (
-              <div key={status.id}>
-                {' '}
-                <h3>{status.name}</h3>
-                {statusRelatedTasks.map(task => (
-                  <article class="card" key={task.id}>
-                    <p>{task.Task}</p>
-                    <p class="tag">Infra</p>
-                  </article>
-                ))}
-              </div>
+      <>
+        <main class="task-board">
+          {statuses.map(status => {
+            const statusRelatedTasks = tasks.filter(
+              task => task.task_status && task.task_status.name === status.name,
             );
-          }
-        })}
-      </main>
+            console.log('status-related-tasks: ', statusRelatedTasks);
+            if (status.name !== 'Backlog') {
+              return (
+                <div key={status.id}>
+                  {' '}
+                  <h3>{status.name}</h3>
+                  {statusRelatedTasks.map(task => (
+                    <article
+                      class="card"
+                      key={task.id}
+                      onClick={() => {
+                        handleTaskClick(task);
+                      }}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <p>{task.Task}</p>
+                      <p class="tag">Infra</p>
+                    </article>
+                  ))}
+                </div>
+              );
+            }
+          })}
+        </main>
+        {isDialogOpen && selectedTask && (
+          <TaskDetailDialog task={selectedTask} onClose={handleCloseDialog} />
+        )}
+      </>
     );
   }
 }
