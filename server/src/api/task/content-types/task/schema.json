@@ -25,6 +25,15 @@
       "relation": "manyToOne",
       "target": "api::status.status",
       "inversedBy": "tasks"
+    },
+    "labels": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::label.label",
+      "inversedBy": "tasks"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

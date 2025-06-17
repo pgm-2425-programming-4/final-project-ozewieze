@@ -9,7 +9,6 @@ export const Route = createFileRoute('/projects/$id')({
 
 function RouteComponent() {
   const { id } = Route.useParams();
-  console.log(id);
 
   return (
     <>

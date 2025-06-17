@@ -3,7 +3,6 @@ import { fetchProjectById } from '../queries/fetchProjectById';
 import { useQuery } from '@tanstack/react-query';
 
 export function Header({ projectId }) {
-  console.log('project-id: ', projectId);
   const { isPending, isError, data } = useQuery({
     queryKey: ['project', projectId],
     queryFn: async () => await fetchProjectById(projectId),

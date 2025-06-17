@@ -24,7 +24,7 @@ h1 {
   font-style: normal;
   margin-bottom: var(--spacing-base);
 }
-h3 {
+div h3 {
   font-weight: var(--normal);
   text-decoration: underline;
   margin-bottom: var(--spacing-bl);

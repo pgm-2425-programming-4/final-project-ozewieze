@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "labels",
+  "info": {
+    "singularName": "label",
+    "pluralName": "labels",
+    "displayName": "Label"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::task.task",
+      "mappedBy": "labels"
+    }
+  }
+}

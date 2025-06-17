@@ -11,7 +11,7 @@ function PaginatedBacklog({ currentProject }) {
   );
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(10);
   function handlePageChanged(pageNumber) {
     setCurrentPage(pageNumber);
   }

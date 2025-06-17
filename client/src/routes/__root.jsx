@@ -20,3 +20,4 @@ export const Route = createRootRoute({
     </React.Fragment>
   ),
 });
+// TODO in database nieuwe relational fields aanmaken voor tasks, naast status ook label en beschrijving

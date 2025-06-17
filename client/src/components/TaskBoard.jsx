@@ -19,6 +19,7 @@ export function TaskBoard({ projectId }) {
     isPending: statusesIsPending,
     error: statusesError,
   } = useQuery({ queryKey: ['statuses'], queryFn: fetchAllStatuses });
+
   if (projectIsPending || statusesIsPending) {
     return (
       <main className="task-board">
