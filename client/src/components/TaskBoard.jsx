@@ -65,7 +65,7 @@ export function TaskBoard({ projectId }) {
                   <h3>{status.name}</h3>
                   {statusRelatedTasks.map(task => (
                     <article
-                      class="card"
+                      className="card"
                       key={task.id}
                       onClick={() => {
                         handleTaskClick(task);
@@ -73,7 +73,7 @@ export function TaskBoard({ projectId }) {
                       style={{ cursor: 'pointer' }}
                     >
                       <p>{task.Task}</p>
-                      <p class="tag">Infra</p>
+                      <p className="tag">Infra</p>
                     </article>
                   ))}
                 </div>

@@ -27,7 +27,7 @@ export function TaskDetailDialog({ task, onClose }) {
                   className="tag"
                   style={{ backgroundColor: label.color }}
                 >
-                  {label.name || 'no label'}
+                  {label.name}
                 </span>
               ))}
             </div>
