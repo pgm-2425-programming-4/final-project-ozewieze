@@ -73,7 +73,16 @@ export function TaskBoard({ projectId }) {
                       style={{ cursor: 'pointer' }}
                     >
                       <p>{task.Task}</p>
-                      <p className="tag">Infra</p>
+
+                      {task.labels.map(label => (
+                        <p
+                          key={label.id}
+                          className="tag"
+                          style={{ backgroundColor: label.color }}
+                        >
+                          {label.name}
+                        </p>
+                      ))}
                     </article>
                   ))}
                 </div>

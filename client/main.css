@@ -138,7 +138,6 @@ div h3 {
   margin-bottom: var(--spacing-base);
 }
 .tag {
-  background-color: var(--contrast);
   font-size: var(--size-xs);
   color: var(--primary);
   display: inline-block;

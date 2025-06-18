@@ -1,5 +1,6 @@
 // TaskDetailDialog.jsx
 export function TaskDetailDialog({ task, onClose }) {
+  console.log('task parameter in TaskDetailDialog : ', task);
   return (
     <div className="dialog-overlay" onClick={onClose}>
       <div className="dialog-content" onClick={e => e.stopPropagation()}>

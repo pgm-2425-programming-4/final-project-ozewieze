@@ -2,7 +2,9 @@ import { API_URL, API_TOKEN } from '../constants/constants';
 
 export async function fetchProjectRelatedTasks(projectId) {
   const response = await fetch(
-    `${API_URL}/projects/${projectId}?populate[tasks][populate][0]=task_status`,
+    // `${API_URL}/projects/${projectId}?populate[tasks][populate][0]=task_status&[populate][0]=labels`,
+    `${API_URL}/projects/${projectId}?populate[tasks][populate][0]=task_status&populate[tasks][populate][1]=labels`,
+
     {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
