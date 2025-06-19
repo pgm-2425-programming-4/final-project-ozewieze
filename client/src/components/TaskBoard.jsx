@@ -91,7 +91,12 @@ export function TaskBoard({ projectId }) {
           })}
         </main>
         {isDialogOpen && selectedTask && (
-          <TaskDetailDialog task={selectedTask} onClose={handleCloseDialog} />
+          <TaskDetailDialog
+            task={selectedTask}
+            onClose={handleCloseDialog}
+            projectId={projectId}
+            statusesData={statusesData}
+          />
         )}
       </>
     );
