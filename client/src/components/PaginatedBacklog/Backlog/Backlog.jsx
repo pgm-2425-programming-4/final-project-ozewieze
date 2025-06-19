@@ -6,7 +6,10 @@ export function Backlog({ tasks, total }) {
       <main class="backlog-board">
         <h3>Backlog</h3>
         <div>
-          <span class="total-items">{total} Tasks</span>
+          <span class="total-items">
+            {total}
+            {total === 1 ? ' Task' : ' Tasks'}
+          </span>
         </div>
 
         <table>
