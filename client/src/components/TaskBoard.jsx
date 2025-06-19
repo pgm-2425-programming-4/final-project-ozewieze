@@ -6,7 +6,7 @@ import {
 } from '../queries/fetchProjectRelatedTasks';
 import { TaskDetailDialog } from './TaskDetailDialog';
 
-export function TaskBoard({ projectId, selectedLabelFilter }) {
+export function TaskBoard({ projectId, selectedLabelFilter, searchText }) {
   console.log('TaskBoard received selectedLabelFilter:', selectedLabelFilter);
   const [selectedTask, setSelectedTask] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -49,15 +49,23 @@ export function TaskBoard({ projectId, selectedLabelFilter }) {
     const tasks = projectData.data.tasks;
     console.log('tasks returned:', tasks);
 
+    // label filter
     // filter() uses the boolean result to DECIDE which items to include, but it returns the ORIGINAL items, not the boolean results!
     const filteredTasks = tasks.filter(task => {
       const labelMatch =
         selectedLabelFilter === 'all' ||
         task.labels?.some(label => label.documentId === selectedLabelFilter);
 
-      return labelMatch;
+      // description match
+      const searchMatch =
+        searchText === '' ||
+        task.description?.toLowerCase().includes(searchText.toLowerCase()) ||
+        task.Task?.toLowerCase().includes(searchText.toLowerCase());
+
+      return labelMatch && searchMatch;
     });
     console.log('filteredTasks: ', filteredTasks);
+
     const statuses = statusesData.data;
 
     return (

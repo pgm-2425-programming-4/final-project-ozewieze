@@ -12,6 +12,7 @@ function RouteComponent() {
   const { id } = Route.useParams();
   const [selectedLabelFilter, setSelectedLabelFilter] = useState('all');
   console.log('selectedLabelFilter:', selectedLabelFilter);
+  const [searchText, setSearchText] = useState('');
 
   return (
     <>
@@ -19,11 +20,14 @@ function RouteComponent() {
         projectId={id}
         selectedLabelFilter={selectedLabelFilter}
         setSelectedLabelFilter={setSelectedLabelFilter}
+        searchText={searchText}
+        setSearchText={setSearchText}
       />
       <TaskBoard
         projectId={id}
         selectedLabelFilter={selectedLabelFilter}
         setSelectedLabelFilter={setSelectedLabelFilter}
+        searchText={searchText}
       />
     </>
   );

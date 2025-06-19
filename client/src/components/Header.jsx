@@ -11,6 +11,8 @@ export function Header({
   projectId,
   selectedLabelFilter,
   setSelectedLabelFilter,
+  searchText,
+  setSearchText,
 }) {
   const queryClient = useQueryClient(); // Get the client instance
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
@@ -120,6 +122,8 @@ export function Header({
             name="search"
             placeholder="Search by description"
             aria-label="Search tasks"
+            value={searchText}
+            onChange={e => setSearchText(e.target.value)}
           />
         </form>
         <div className="active-project">
