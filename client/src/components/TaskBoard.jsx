@@ -49,7 +49,7 @@ export function TaskBoard({ projectId }) {
     console.log('tasks returned:', tasks);
 
     const statuses = statusesData.data;
-    console.log('statusesData returned: ', statuses);
+
     return (
       <>
         <main class="task-board">
@@ -57,7 +57,7 @@ export function TaskBoard({ projectId }) {
             const statusRelatedTasks = tasks.filter(
               task => task.task_status && task.task_status.name === status.name,
             );
-            console.log('status-related-tasks: ', statusRelatedTasks);
+
             if (status.name !== 'Backlog') {
               return (
                 <div key={status.id}>
