@@ -3,9 +3,10 @@
   --primary: hsla(0, 0%, 100%, 1);
   --tint: hsl(210, 5%, 91%);
   --tint-plus: hsla(224, 4%, 52%, 1);
-  --contrast: rgb(28, 34, 49);
+  --contrast: hsl(223, 27%, 15%);
   --accent: hsla(223, 100%, 84%, 1);
   --accent-subtle: hsla(225, 34%, 37%, 1);
+  --bulma-blue: hsl(233, 100%, 63%);
   /* spacing*/
   --spacing-xxs: 0.3rem;
   --spacing-xs: 0.5rem;

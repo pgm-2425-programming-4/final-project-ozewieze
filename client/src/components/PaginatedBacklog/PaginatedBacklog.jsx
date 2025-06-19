@@ -35,9 +35,10 @@ function PaginatedBacklog({ currentProject }) {
   if (isPending) return 'Loading...';
   if (error) return `An error has occurred: ${error.message}`;
   console.log('return paginatedbacklog: ', data.data);
+  console.log('return items paginatedbacklog: ', data.meta.pagination.total);
   return (
     <>
-      <Backlog tasks={data.data} />
+      <Backlog tasks={data.data} total={data.meta.pagination.total} />
       <Pagination
         pageCount={data.meta.pagination.pageCount}
         currentPage={currentPage}

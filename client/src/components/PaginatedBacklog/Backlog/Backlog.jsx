@@ -1,10 +1,13 @@
 import './Backlog.css';
-export function Backlog({ tasks }) {
+export function Backlog({ tasks, total }) {
   return (
     <>
       {' '}
       <main class="backlog-board">
         <h3>Backlog</h3>
+        <div>
+          <span class="total-items">{total} Tasks</span>
+        </div>
 
         <table>
           <tbody className="backlog-board">

@@ -9,3 +9,10 @@
 .backlog-board .card {
   width: 40rem;
 }
+.total-items {
+  padding: var(--spacing-s) var(--spacing-base);
+  background-color: var(--bulma-blue);
+  color: var(--primary);
+  margin-bottom: var(--spacing-base);
+  border-radius: var(--radius-base);
+}
