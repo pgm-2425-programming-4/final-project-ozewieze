@@ -75,8 +75,8 @@ export function AddTaskModal({
                 <label key={label.id} className="checkbox-label">
                   <input
                     type="checkbox"
-                    checked={taskForm.selectedLabels.includes(label.id)}
-                    onChange={() => handleLabelToggle(label.id)}
+                    checked={taskForm.selectedLabels.includes(label.documentId)}
+                    onChange={() => handleLabelToggle(label.documentId)}
                   />
                   <span
                     style={{ backgroundColor: label.color }}

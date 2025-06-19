@@ -7,7 +7,11 @@ import { fetchAllStatuses } from '../queries/fetchProjectRelatedTasks';
 import { AddTaskModal } from './AddTaskModal.jsx';
 import { createTask } from '../queries/createTask.jsx';
 
-export function Header({ projectId }) {
+export function Header({
+  projectId,
+  selectedLabelFilter,
+  setSelectedLabelFilter,
+}) {
   const queryClient = useQueryClient(); // Get the client instance
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
   const [taskForm, setTaskForm] = useState({
@@ -90,10 +94,18 @@ export function Header({ projectId }) {
     <>
       <header className="board-header">
         <form action="#">
-          <select className="select" name="tags" id="tag-select">
+          <select
+            className="select"
+            name="tags"
+            id="tag-select"
+            value={selectedLabelFilter}
+            onChange={e => setSelectedLabelFilter(e.target.value)}
+          >
+            <option value="all">All Labels</option>
+
             {labelsData.data.map(label => {
               return (
-                <option key={label.id} value={label.id}>
+                <option key={label.id} value={label.documentId}>
                   {label.name}
                 </option>
               );
@@ -128,7 +140,6 @@ export function Header({ projectId }) {
       </header>
       {showAddTaskModal && (
         <AddTaskModal
-          // projectId={projectId}
           labelsData={labelsData}
           statusData={statusData}
           taskForm={taskForm}
