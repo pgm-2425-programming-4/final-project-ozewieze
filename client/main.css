@@ -297,10 +297,13 @@ label {
 /* ************* */
 
 .intro {
+  display: flex;
+  flex-direction: column;
   background-color: var(--accent);
   width: 30rem;
   margin: 0 auto;
-  padding: var(--spacing-xs);
+  padding: var(--spacing-base);
   border-radius: var(--radius-base);
-  text-align: center;
+  align-items: center;
+  gap: 1rem;
 }
