@@ -28,12 +28,8 @@ export function Sidebar() {
     <aside className="sidebar">
       <h1>PROJECTS</h1>
       <ul>
-<<<<<<< HEAD
-        {data.data.map(project => (
-=======
         {/* {console.log(data.data)} */}
         {data.data.map((project) => (
->>>>>>> 44d39ad8827c6ceadb9eff519e0783cf0731c367
           <li key={project.id}>
             <Link
               to="/projects/$id"
