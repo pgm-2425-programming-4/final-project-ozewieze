@@ -291,3 +291,16 @@ label {
   background-color: var(--accent);
   color: var(--contrast);
 }
+
+/* ************** */
+/* INDEX*/
+/* ************* */
+
+.intro {
+  background-color: var(--accent);
+  width: 30rem;
+  margin: 0 auto;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-base);
+  text-align: center;
+}
