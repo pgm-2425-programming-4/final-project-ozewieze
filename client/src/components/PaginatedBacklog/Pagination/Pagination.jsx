@@ -43,7 +43,7 @@ export function Pagination({
       pageLinks.push(
         <li key={index}>
           <span className="pagination-ellipsis">&hellip;</span>
-        </li>
+        </li>,
       );
     } else {
       pageLinks.push(
@@ -58,7 +58,7 @@ export function Pagination({
           >
             {pageNumber}
           </button>
-        </li>
+        </li>,
       );
     }
   });
@@ -86,7 +86,7 @@ export function Pagination({
             onPageSizeChanged(event.target.value);
           }}
         >
-          {PAGE_SIZE_OPTIONS.map(option => (
+          {PAGE_SIZE_OPTIONS.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>
