@@ -4,7 +4,7 @@ import { updateTaskStatus } from '../queries/updateTaskStatus';
 // TaskDetailDialog.jsx
 export function TaskDetailDialog({ task, onClose, projectId, statusesData }) {
   const queryClient = useQueryClient();
-  async function handleStatusChange(newStatusId) {
+  const handleStatusChange = async (newStatusId) => {
     try {
       await updateTaskStatus(task.documentId, newStatusId); //could have used tanstack useMutation, but was actually more complex
       queryClient.invalidateQueries(['project', projectId, 'with-tasks']);
@@ -12,7 +12,7 @@ export function TaskDetailDialog({ task, onClose, projectId, statusesData }) {
     } catch (error) {
       console.error('Error updating status:', error);
     }
-  }
+  };
 
   return (
     <div className="dialog-overlay" onClick={onClose}>
