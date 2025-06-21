@@ -11,8 +11,6 @@ export async function fetchProjectById(id) {
   if (!response.ok) {
     throw new Error('Failed to fetch project');
   }
-
   const data = await response.json();
-  console.log('current project: ', data);
   return data;
 }

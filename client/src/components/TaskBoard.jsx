@@ -7,11 +7,10 @@ import {
 import { TaskDetailDialog } from './TaskDetailDialog';
 
 export function TaskBoard({ projectId, selectedLabelFilter, searchText }) {
-  console.log('TaskBoard received selectedLabelFilter:', selectedLabelFilter);
   const [selectedTask, setSelectedTask] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const handleTaskClick = task => {
+  const handleTaskClick = (task) => {
     setSelectedTask(task);
     setIsDialogOpen(true);
   };
@@ -47,14 +46,13 @@ export function TaskBoard({ projectId, selectedLabelFilter, searchText }) {
   }
   if (projectData && statusesData) {
     const tasks = projectData.data.tasks;
-    console.log('tasks returned:', tasks);
 
     // label filter
     // filter() uses the boolean result to DECIDE which items to include, but it returns the ORIGINAL items, not the boolean results!
-    const filteredTasks = tasks.filter(task => {
+    const filteredTasks = tasks.filter((task) => {
       const labelMatch =
         selectedLabelFilter === 'all' ||
-        task.labels?.some(label => label.documentId === selectedLabelFilter);
+        task.labels?.some((label) => label.documentId === selectedLabelFilter);
 
       // description match
       const searchMatch =
@@ -64,16 +62,15 @@ export function TaskBoard({ projectId, selectedLabelFilter, searchText }) {
 
       return labelMatch && searchMatch;
     });
-    console.log('filteredTasks: ', filteredTasks);
-
     const statuses = statusesData.data;
 
     return (
       <>
         <main class="task-board">
-          {statuses.map(status => {
+          {statuses.map((status) => {
             const statusRelatedTasks = filteredTasks.filter(
-              task => task.task_status && task.task_status.name === status.name,
+              (task) =>
+                task.task_status && task.task_status.name === status.name,
             );
 
             if (status.name !== 'Backlog') {
@@ -81,7 +78,7 @@ export function TaskBoard({ projectId, selectedLabelFilter, searchText }) {
                 <div key={status.id}>
                   {' '}
                   <h3>{status.name}</h3>
-                  {statusRelatedTasks.map(task => (
+                  {statusRelatedTasks.map((task) => (
                     <article
                       className="card"
                       key={task.id}
@@ -92,7 +89,7 @@ export function TaskBoard({ projectId, selectedLabelFilter, searchText }) {
                     >
                       <p>{task.Task}</p>
 
-                      {task.labels.map(label => (
+                      {task.labels.map((label) => (
                         <p
                           key={label.id}
                           className="tag"

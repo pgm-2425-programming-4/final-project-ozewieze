@@ -11,7 +11,6 @@ export const Route = createFileRoute('/projects/$id')({
 function RouteComponent() {
   const { id } = Route.useParams();
   const [selectedLabelFilter, setSelectedLabelFilter] = useState('all');
-  console.log('selectedLabelFilter:', selectedLabelFilter);
   const [searchText, setSearchText] = useState('');
 
   return (

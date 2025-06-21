@@ -4,8 +4,6 @@ import { updateTaskStatus } from '../queries/updateTaskStatus';
 // TaskDetailDialog.jsx
 export function TaskDetailDialog({ task, onClose, projectId, statusesData }) {
   const queryClient = useQueryClient();
-  console.log('task parameter in TaskDetailDialog : ', task);
-
   async function handleStatusChange(newStatusId) {
     try {
       await updateTaskStatus(task.documentId, newStatusId); //could have used tanstack useMutation, but was actually more complex
@@ -18,7 +16,7 @@ export function TaskDetailDialog({ task, onClose, projectId, statusesData }) {
 
   return (
     <div className="dialog-overlay" onClick={onClose}>
-      <div className="dialog-content" onClick={e => e.stopPropagation()}>
+      <div className="dialog-content" onClick={(e) => e.stopPropagation()}>
         <div className="dialog-header">
           <h2>{task.Task}</h2>
           <button onClick={onClose} className="close-button">
@@ -34,9 +32,9 @@ export function TaskDetailDialog({ task, onClose, projectId, statusesData }) {
             <label>Status</label>
             <select
               value={task.task_status?.documentId || ''}
-              onChange={e => handleStatusChange(e.target.value)}
+              onChange={(e) => handleStatusChange(e.target.value)}
             >
-              {statusesData.data.map(status => (
+              {statusesData.data.map((status) => (
                 <option key={status.id} value={status.documentId}>
                   {status.name}
                 </option>
@@ -46,7 +44,7 @@ export function TaskDetailDialog({ task, onClose, projectId, statusesData }) {
 
           <div className="field">
             <div className="labels">
-              {task.labels?.map(label => (
+              {task.labels?.map((label) => (
                 <span
                   key={label.id}
                   className="tag"

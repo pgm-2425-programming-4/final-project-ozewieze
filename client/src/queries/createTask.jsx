@@ -1,7 +1,5 @@
 import { API_URL, API_TOKEN } from '../constants/constants';
-export const createTask = async taskData => {
-  console.log('Sending taskData:', taskData); // ← Add this
-  console.log('Stringified:', JSON.stringify({ data: taskData }));
+export const createTask = async (taskData) => {
   const response = await fetch(`${API_URL}/tasks`, {
     method: 'POST',
     headers: {

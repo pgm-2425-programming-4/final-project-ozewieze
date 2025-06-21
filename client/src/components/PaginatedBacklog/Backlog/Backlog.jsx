@@ -3,10 +3,10 @@ export function Backlog({ tasks, total }) {
   return (
     <>
       {' '}
-      <main class="backlog-board">
+      <main className="backlog-board">
         <h3>Backlog</h3>
         <div>
-          <span class="total-items">
+          <span className="total-items">
             {total}
             {total === 1 ? ' Task' : ' Tasks'}
           </span>
@@ -14,7 +14,7 @@ export function Backlog({ tasks, total }) {
 
         <table>
           <tbody className="backlog-board">
-            {tasks.map(task => {
+            {tasks.map((task) => {
               return (
                 <tr key={task.id} className="card">
                   <td>

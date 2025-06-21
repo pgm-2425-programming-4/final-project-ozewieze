@@ -5,11 +5,6 @@ import { Pagination } from './Pagination/Pagination';
 import { getTasks } from '../../queries/getTasks';
 
 function PaginatedBacklog({ currentProject }) {
-  console.log(
-    'PaginatedBacklog - currentProject specifically:',
-    currentProject,
-  );
-
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   function handlePageChanged(pageNumber) {
@@ -34,8 +29,6 @@ function PaginatedBacklog({ currentProject }) {
 
   if (isPending) return 'Loading...';
   if (error) return `An error has occurred: ${error.message}`;
-  console.log('return paginatedbacklog: ', data.data);
-  console.log('return items paginatedbacklog: ', data.meta.pagination.total);
   return (
     <>
       <Backlog tasks={data.data} total={data.meta.pagination.total} />

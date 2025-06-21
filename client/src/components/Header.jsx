@@ -57,14 +57,10 @@ export function Header({
   if (headerIsError || labelsIsError || statusIsError) {
     return <span>Error: {headerIsError.message}</span>;
   }
-  console.log('the labeldata: ', labelsData);
-  console.log('header individueel project: ', headerData.data.Project);
-  console.log('statusData: ', statusData.data);
-
   const handleAddTask = () => {
     setShowAddTaskModal(true);
   };
-  const handleSubmitTask = async e => {
+  const handleSubmitTask = async (e) => {
     e.preventDefault();
 
     const newTask = {
@@ -101,11 +97,11 @@ export function Header({
             name="tags"
             id="tag-select"
             value={selectedLabelFilter}
-            onChange={e => setSelectedLabelFilter(e.target.value)}
+            onChange={(e) => setSelectedLabelFilter(e.target.value)}
           >
             <option value="all">All Labels</option>
 
-            {labelsData.data.map(label => {
+            {labelsData.data.map((label) => {
               return (
                 <option key={label.id} value={label.documentId}>
                   {label.name}
@@ -123,7 +119,7 @@ export function Header({
             placeholder="Search by description"
             aria-label="Search tasks"
             value={searchText}
-            onChange={e => setSearchText(e.target.value)}
+            onChange={(e) => setSearchText(e.target.value)}
           />
         </form>
         <div className="active-project">
